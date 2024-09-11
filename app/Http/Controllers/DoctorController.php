@@ -91,4 +91,12 @@ class DoctorController extends Controller
 
         return view('frontend.pages.doctor.doctor', compact('doctors'));
     }
+
+    public function form(){
+        return view('basicform.form');
+    }
+
+    public function table(){
+        return view('basicform.table');
+    }
 }

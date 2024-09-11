@@ -12,9 +12,9 @@ class ReportController extends Controller
     public function report()
     {
         //dd('yes');
-        $oders = Order::all();
+        // $oders = Order::all();
 
-        return view('backend.pages.report.report', compact('oders'));
+        return view('backend.pages.report.report');
     }
 
     public function reportSearch(Request $request)
