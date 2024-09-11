@@ -61,11 +61,14 @@
                                 <tbody>
                                     @foreach ($doctor->appointments as $appointment)
                                         <tr>
-                                            <td>{{ $appointment->appointment_date->format('Y-m-d H:i') }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($appointment->appointment_date)->format('d F Y H:i') }}</td>
                                             <td>{{ $appointment->type }}</td>
                                             <td>{{ $appointment->status }}</td>
-                                            <td>{{ $appointment->patient->name }}</td>
-                                        </tr>
+                                            <td>
+                                                <a href="{{ route('patients.show', $appointment->patient_id) }}">
+                                                    {{ $appointment->patient->name }}
+                                                </a>
+                                            </td>                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -96,11 +99,14 @@
                                 <tbody>
                                     @foreach ($doctor->surgeryDetails as $surgeryDetail)
                                         <tr>
-                                            <td>{{ $surgeryDetail->surgery_date->format('Y-m-d H:i') }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($surgeryDetail->surgery_date)->format('d F Y H:i') }}</td>
                                             <td>{{ $surgeryDetail->surgery_type }}</td>
                                             <td>{{ $surgeryDetail->notes }}</td>
-                                            <td>{{ $surgeryDetail->patient->name }}</td>
-                                        </tr>
+                                            <td>
+                                                <a href="{{ route('patients.show', $surgeryDetail->patient_id) }}">
+                                                    {{ $surgeryDetail->patient->name }}
+                                                </a>
+                                            </td>                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
