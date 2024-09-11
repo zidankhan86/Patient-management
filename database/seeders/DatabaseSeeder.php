@@ -4,10 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Title;
-use App\Models\Product;
 use Illuminate\Database\Seeder;
-use Database\Seeders\HeroSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -25,7 +22,7 @@ class DatabaseSeeder extends Seeder
 
         // AdminSeeder::class;
         $this->call([
-            AdminSeeder::class
+            AdminSeeder::class,
         ]);
     }
 }
