@@ -12,12 +12,11 @@ use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     public function dashboard(){
-        $totalOrder         = Order::get()->count();
-        $totalProducts      = Product::get()->count();
+    
         $totalCategories    = Category::get()->count();
         $users              = User::latest()->get();
         $totalUsers         = User::get()->count();
         
-        return view('backend.pages.dashboard',compact('users','totalOrder','totalProducts','totalCategories','totalUsers'));
+        return view('backend.pages.dashboard',compact('users','totalCategories','totalUsers'));
     }
 }

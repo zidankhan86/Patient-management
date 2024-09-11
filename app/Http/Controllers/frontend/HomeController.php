@@ -19,13 +19,7 @@ class HomeController extends Controller
     public function home(){
 
 
-     
-         
-          //Products
-          $products = Product::simplePaginate(15);
-
-         return view('frontend.pages.home',
-         compact('products'));
+         return view('frontend.pages.home');
     }
 
 }

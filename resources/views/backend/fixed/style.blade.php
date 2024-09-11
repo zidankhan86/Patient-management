@@ -5,7 +5,7 @@
     <!-- theme meta -->
     <meta name="theme-name" content="quixlab" />
   
-       <title> furniture.com</title>
+       <title> PMS.com</title>
        
       
 

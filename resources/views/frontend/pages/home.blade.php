@@ -1,128 +1,238 @@
   @extends('frontend.master')
 
   @section('content')
-  <!--================Home Banner Area =================-->
-  <section class="home_banner_area">
-    <div class="banner_inner">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="banner_content">
-                        <h2>Precise concept design <br />for stylish living</h2>
-                        <p>Choose and customize your kitchen as per your taste.</p>
-                        <a class="banner_btn" href="{{ route('shop') }}">Get Started</a>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="home_right_box">
-                        <div class="home_item">
-                            <i class="flaticon-sofa"></i>
-                        </div>
-                        <div class="home_item">
-                            <i class="flaticon-bed"></i>
-                        </div>
-                        <div class="home_item">
-                            <i class="flaticon-computer"></i>
-                        </div>
-                        <div class="home_item">
-                            <i class="flaticon-mirror"></i>
-                        </div>
-                        <div class="home_item">
-                            <i class="flaticon-closet"></i>
-                        </div>
-                        <div class="home_item">
-                            <i class="flaticon-kitchen"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- department section -->
+
+<section class="department_section layout_padding">
+    <div class="department_container">
+      <div class="container ">
+        <div class="heading_container heading_center">
+          <h2>
+            Our Departments
+          </h2>
+          <p>
+            Asperiores sunt consectetur impedit nulla molestiae delectus repellat laborum dolores doloremque accusantium
+          </p>
         </div>
+        <div class="row">
+          <div class="col-md-3">
+            <div class="box ">
+              <div class="img-box">
+                <img src="images/s1.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Cardiology
+                </h5>
+                <p>
+                  fact that a reader will be distracted by the readable page when looking at its layout.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box ">
+              <div class="img-box">
+                <img src="images/s2.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Diagnosis
+                </h5>
+                <p>
+                  fact that a reader will be distracted by the readable page when looking at its layout.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box ">
+              <div class="img-box">
+                <img src="images/s3.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  Surgery
+                </h5>
+                <p>
+                  fact that a reader will be distracted by the readable page when looking at its layout.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="box ">
+              <div class="img-box">
+                <img src="images/s4.png" alt="">
+              </div>
+              <div class="detail-box">
+                <h5>
+                  First Aid
+                </h5>
+                <p>
+                  fact that a reader will be distracted by the readable page when looking at its layout.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="btn-box">
+          <a href="">
+            View All
+          </a>
+        </div>
+      </div>
     </div>
-</section>
-<!--================End Home Banner Area =================-->
- @include('frontend.components.product')
+  </section>
+
+  <!-- end department section -->
+
+  <!-- about section -->
+
+  <section class="about_section layout_margin-bottom">
+    <div class="container  ">
+      <div class="row">
+        <div class="col-md-6 ">
+          <div class="img-box">
+            <img src="images/about-img.jpg" alt="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                About <span>Us</span>
+              </h2>
+            </div>
+            <p>
+              There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration
+              in some form, by injected humour, or randomised words which don't look even slightly believable. If you
+              are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in
+              the middle of text. All
+            </p>
+            <a href="">
+              Read More
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+
+  <!-- doctor section -->
+
+  <section class="doctor_section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Our Doctors
+        </h2>
+        <p class="col-md-10 mx-auto px-0">
+          Incilint sapiente illo quo praesentium officiis laudantium nostrum, ad adipisci cupiditate sit, quisquam aliquid. Officiis laudantium fuga ad voluptas aspernatur error fugiat quos facilis saepe quas fugit, beatae id quisquam.
+        </p>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 col-lg-4 mx-auto">
+          <div class="box">
+            <div class="img-box">
+              <img src="images/d1.jpg" alt="">
+            </div>
+            <div class="detail-box">
+              <div class="social_box">
+                <a href="">
+                  <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-youtube" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-linkedin" aria-hidden="true"></i>
+                </a>
+              </div>
+              <h5>
+                Elina Josh
+              </h5>
+              <h6 class="">
+                Doctor
+              </h6>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-4 mx-auto">
+          <div class="box">
+            <div class="img-box">
+              <img src="images/d2.jpg" alt="">
+            </div>
+            <div class="detail-box">
+              <div class="social_box">
+                <a href="">
+                  <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-youtube" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-linkedin" aria-hidden="true"></i>
+                </a>
+              </div>
+              <h5>
+                Adam View
+              </h5>
+              <h6 class="">
+                Doctor
+              </h6>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-lg-4 mx-auto">
+          <div class="box">
+            <div class="img-box">
+              <img src="images/d3.jpg" alt="">
+            </div>
+            <div class="detail-box">
+              <div class="social_box">
+                <a href="">
+                  <i class="fa fa-facebook" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-youtube" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                  <i class="fa fa-linkedin" aria-hidden="true"></i>
+                </a>
+              </div>
+              <h5>
+                Mia Mike
+              </h5>
+              <h6 class="">
+                Doctor
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="btn-box">
+        <a href="">
+          View All
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- end doctor section -->
 
  
 
-        <!--================Feature Area =================-->
-        <section class="feature_area p_120">
-        	<div class="container">
-        		<div class="main_title">
-        			<h2>Some Features that Made us Unique</h2>
-        			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-        		</div>
-        		<div class="row feature_inner">
-        			<div class="col-lg-4 col-md-6">
-        				<div class="feature_item">
-        					<h4><i class="lnr lnr-user"></i>Expert Technicians</h4>
-        					<p>Usage of the Internet is becoming more common due to rapid advancement of technology and power.</p>
-        				</div>
-        			</div>
-        			<div class="col-lg-4 col-md-6">
-        				<div class="feature_item">
-        					<h4><i class="lnr lnr-license"></i>Professional Service</h4>
-        					<p>Usage of the Internet is becoming more common due to rapid advancement of technology and power.</p>
-        				</div>
-        			</div>
-        			<div class="col-lg-4 col-md-6">
-        				<div class="feature_item">
-        					<h4><i class="lnr lnr-phone"></i>Great Support</h4>
-        					<p>Usage of the Internet is becoming more common due to rapid advancement of technology and power.</p>
-        				</div>
-        			</div>
-        			<div class="col-lg-4 col-md-6">
-        				<div class="feature_item">
-        					<h4><i class="lnr lnr-rocket"></i>Technical Skills</h4>
-        					<p>Usage of the Internet is becoming more common due to rapid advancement of technology and power.</p>
-        				</div>
-        			</div>
-        			<div class="col-lg-4 col-md-6">
-        				<div class="feature_item">
-        					<h4><i class="lnr lnr-diamond"></i>Highly Recomended</h4>
-        					<p>Usage of the Internet is becoming more common due to rapid advancement of technology and power.</p>
-        				</div>
-        			</div>
-        			<div class="col-lg-4 col-md-6">
-        				<div class="feature_item">
-        					<h4><i class="lnr lnr-bubble"></i>Positive Reviews</h4>
-        					<p>Usage of the Internet is becoming more common due to rapid advancement of technology and power.</p>
-        				</div>
-        			</div>
-        		</div>
-        	</div>
-        </section>
-        <!--================End Feature Area =================-->
-
- <section class="impress_area p_120">
-    <div class="container">
-        <div class="impress_inner text-center">
-            <h2>Looking for a <br />quality and affordable Furniture?</h2>
-            <p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace.</p>
-            <a class="main_btn" href="#">Read Details</a>
-        </div>
-    </div>
-</section>
-
-<section class="clients_logo_area p_120">
-    <div class="container">
-        <div class="clients_slider owl-carousel">
-            <div class="item">
-                <img src="frontend/img/clients-logo/c-logo-1.png" alt="">
-            </div>
-            <div class="item">
-                <img src="frontend/img/clients-logo/c-logo-2.png" alt="">
-            </div>
-            <div class="item">
-                <img src="frontend/img/clients-logo/c-logo-3.png" alt="">
-            </div>
-            <div class="item">
-                <img src="frontend/img/clients-logo/c-logo-4.png" alt="">
-            </div>
-            <div class="item">
-                <img src="frontend/img/clients-logo/c-logo-5.png" alt="">
-            </div>
-        </div>
-    </div>
-</section>
 
 @endsection

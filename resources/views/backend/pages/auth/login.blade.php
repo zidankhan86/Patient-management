@@ -2,27 +2,13 @@
 
   @section('content')
 
-  <section class="banner_area">
-    <div class="banner_inner d-flex align-items-center">
-        <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0" data-background=""></div>
-        <div class="container">
-            <div class="banner_content text-center">
-                <h2>Login</h2>
-                <div class="page_link">
-                    <a href="{{ route('home') }}">Home</a>
-                    <a href="{{ url('login-frontend') }}">Login</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootstrap Login Form</title>
+    <title>PMS Login Form</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>

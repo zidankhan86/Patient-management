@@ -9,7 +9,7 @@
                 <div class="form-input-content">
                     <div class="card login-form mb-0">
                         <div class="card-body pt-5">
-                            <a class="text-center" href="{{ route('home') }}"> <h4>Furniture</h4></a><br>
+                            <a class="text-center" href="{{ route('home') }}"> <h4>PMS LOGIN</h4></a><br>
     
                             <form action="{{route('login.submit')}}" method="post" enctype="multipart/form-data">
                                 @csrf
