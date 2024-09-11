@@ -137,7 +137,7 @@
         <div class="col-sm-6 col-lg-4 mx-auto">
           <div class="box">
             <div class="img-box">
-              <img src="images/d1.jpg" alt="">
+              <img src="frontend/images/d1.jpg" alt="">
             </div>
             <div class="detail-box">
               <div class="social_box">
@@ -165,8 +165,8 @@
         </div>
         <div class="col-sm-6 col-lg-4 mx-auto">
           <div class="box">
-            <div class="img-box">
-              <img src="images/d2.jpg" alt="">
+            <div class="frontend/img-box">
+              <img src="frontend/images/d2.jpg" alt="">
             </div>
             <div class="detail-box">
               <div class="social_box">
@@ -195,7 +195,7 @@
         <div class="col-sm-6 col-lg-4 mx-auto">
           <div class="box">
             <div class="img-box">
-              <img src="images/d3.jpg" alt="">
+              <img src="frontend/images/d3.jpg" alt="">
             </div>
             <div class="detail-box">
               <div class="social_box">

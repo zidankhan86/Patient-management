@@ -77,7 +77,7 @@
         <div class="col-sm-6 col-lg-4 mx-auto">
           <div class="box">
             <div class="img-box">
-              <img src="images/d3.jpg" alt="">
+              <img src="frontend/images/d3.jpg" alt="">
             </div>
             <div class="detail-box">
               <div class="social_box">

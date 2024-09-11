@@ -9,9 +9,9 @@ class ProfileController extends Controller
 {
     public function profile(){
 
-        $order = Order::with('user','product')->where('user_id',auth()->user()->id)->get();
+        // $appointments = Order::with('user','product')->where('user_id',auth()->user()->id)->get();
 
-        return view('frontend.pages.profile',compact('order'));
+        return view('frontend.pages.profile');
     }
 
     public function adminProfile(){
