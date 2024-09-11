@@ -75,3 +75,5 @@ Route::resource('surgery-details', SurgeryDetailController::class);
 Route::resource('billing', BillingController::class);
 
 Route::resource('patient-stays', PatientStayController::class);
+
+Route::get('/doctor', [DoctorController::class, 'frontendShow'])->name('doctor');

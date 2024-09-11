@@ -84,4 +84,11 @@ class DoctorController extends Controller
 
         return redirect()->route('doctors.index');
     }
+
+    public function frontendShow()
+    {
+        $doctors = Doctor::all();
+
+        return view('frontend.pages.doctor.doctor', compact('doctors'));
+    }
 }
