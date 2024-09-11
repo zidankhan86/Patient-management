@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Doctor extends Model
+class Patient extends Model
 {
     use HasFactory;
 
-    protected $table = 'doctors';
+    protected $table = 'patients';
 
     protected $guarded = []; // Use an empty array to allow mass assignment for all attributes
 
@@ -31,5 +31,15 @@ class Doctor extends Model
     public function surgeryDetails()
     {
         return $this->hasMany(SurgeryDetail::class);
+    }
+
+    public function billing()
+    {
+        return $this->hasMany(Billing::class);
+    }
+
+    public function stays()
+    {
+        return $this->hasMany(PatientStay::class);
     }
 }
