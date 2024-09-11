@@ -14,7 +14,7 @@ class DoctorController extends Controller
     {
         $doctors = Doctor::all();
 
-        return view('doctors.index', compact('doctors'));
+        return view('backend.pages.doctors.index', compact('doctors'));
     }
 
     /**
@@ -22,7 +22,7 @@ class DoctorController extends Controller
      */
     public function create()
     {
-        return view('doctors.create');
+        return view('backend.pages.doctors.create');
     }
 
     /**
@@ -47,7 +47,9 @@ class DoctorController extends Controller
      */
     public function show(Doctor $doctor)
     {
-        return view('doctors.show', compact('doctor'));
+        $doctor->load('appointments', 'surgeryDetails');
+
+        return view('backend.pages.doctors.show', compact('doctor'));
     }
 
     /**
@@ -55,7 +57,7 @@ class DoctorController extends Controller
      */
     public function edit(Doctor $doctor)
     {
-        return view('doctors.edit', compact('doctor'));
+        return view('backend.pages.doctors.edit', compact('doctor'));
     }
 
     /**
