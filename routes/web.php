@@ -56,7 +56,9 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
     Route::get('/category-edit/{id}', [CategoryController::class, 'categoryEdit'])->name('category.edit');
     Route::post('/category-update/{id}', [CategoryController::class, 'categorupdate'])->name('category.update');
     Route::get('/category-delete/{id}', [CategoryController::class, 'categordelete'])->name('category.delete');
-    // Product Routes
+    // Doctors Routes
+    Route::resource('doctors', DoctorController::class);
+    Route::resource('patients', PatientController::class);
 
     Route::controller(ReportController::class)->group(function () {
 
@@ -65,9 +67,9 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
     });
 });
 
-Route::resource('patients', PatientController::class);
 
-Route::resource('doctors', DoctorController::class);
+
+
 
 Route::resource('appointments', AppointmentController::class);
 

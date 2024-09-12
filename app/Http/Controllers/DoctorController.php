@@ -62,6 +62,7 @@ class DoctorController extends Controller
             "address"              => $request->address,
             'title'                => $request->title,
         ]);
+        Alert::success('success','Doctors updated successfully');
         return redirect()->route('doctors.index');
     }
 
@@ -122,7 +123,7 @@ class DoctorController extends Controller
             'title'                => $request->title,
 
         ]);
-
+        Alert::success('success','Doctors updated successfully');
         return redirect()->route('doctors.index');
     }
 

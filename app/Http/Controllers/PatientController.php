@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Patient;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 class PatientController extends Controller
 {
@@ -14,7 +16,7 @@ class PatientController extends Controller
     {
         $patients = Patient::all();
 
-        return view('patients.index', compact('patients'));
+        return view('backend.pages.patient.index', compact('patients'));
     }
 
     /**
@@ -22,7 +24,7 @@ class PatientController extends Controller
      */
     public function create()
     {
-        return view('patients.create');
+        return view('backend.pages.patient.create');
     }
 
     /**
@@ -30,18 +32,33 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'age' => 'required|integer',
-            'gender' => 'required|string|max:10',
-            'phone' => 'nullable|string|max:20',
-            'email' => 'nullable|string|email|max:100',
-            'address' => 'nullable|string',
-            'patient_type' => 'required|in:Consultancy,Operation/Surgery',
+        $validator = Validator::make($request->all(), [
+            'name'          => 'required|string|max:255',
+            'age'           => 'required|integer|min:0',
+            'gender'        => 'required|string|in:Male,Female,Other',
+            'phone'         => 'required|string|max:20',
+            'email'         => 'required|email|max:100|unique:patients,email',
+            'address'       => 'nullable|string',
+            'patient_type'  => 'required|in:Consultancy,Operation',
         ]);
 
-        Patient::create($request->all());
+        // Check for validation errors
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
+        // Create new patient record
+        Patient::create([
+            'name'          => $request->name,
+            'age'           => $request->age,
+            'gender'        => $request->gender,
+            'phone'         => $request->phone,
+            'email'         => $request->email,
+            'address'       => $request->address,
+            'patient_type'  => $request->patient_type,
+        ]);
+
+        Alert::success('success','Patient Created successfully');
         return redirect()->route('patients.index');
     }
 
@@ -58,7 +75,7 @@ class PatientController extends Controller
      */
     public function edit(Patient $patient)
     {
-        return view('patients.edit', compact('patient'));
+        return view('backend.pages.patient.edit', compact('patient'));
     }
 
     /**
@@ -66,18 +83,31 @@ class PatientController extends Controller
      */
     public function update(Request $request, Patient $patient)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'age' => 'required|integer',
-            'gender' => 'required|string|max:10',
-            'phone' => 'nullable|string|max:20',
-            'email' => 'nullable|string|email|max:100',
-            'address' => 'nullable|string',
-            'patient_type' => 'required|in:Consultancy,Operation/Surgery',
+        $validator = Validator::make($request->all(), [
+            'name'          => 'required|string|max:255',
+            'age'           => 'required|integer|min:0',
+            'gender'        => 'required|string|in:Male,Female,Other',
+            'phone'         => 'required|string|max:20',
+            'email'         => 'required',
+            'address'       => 'nullable|string',
+            'patient_type'  => 'required|in:Consultancy,Operation',
         ]);
 
-        $patient->update($request->all());
+        // Check for validation errors
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
+        $patient->update([
+            'name'          => $request->name,
+            'age'           => $request->age,
+            'gender'        => $request->gender,
+            'phone'         => $request->phone,
+            'email'         => $request->email,
+            'address'       => $request->address,
+            'patient_type'  => $request->patient_type,
+        ]);
+        Alert::success('success','Patient updated successfully');
         return redirect()->route('patients.index');
     }
 
