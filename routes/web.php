@@ -38,6 +38,11 @@ Route::controller(LoginController::class)->group(function () {
 });
 
 Route::group(['middleware' => 'customerAuth'], function () {});
+Route::get('/doctor', [DoctorController::class, 'frontendShow'])->name('doctor');
+
+Route::get('/form', [DoctorController::class, 'form']);
+Route::get('/table', [DoctorController::class, 'table']);
+
 
 //middleware auth and admin
 Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function () {
@@ -76,7 +81,4 @@ Route::resource('billing', BillingController::class);
 
 Route::resource('patient-stays', PatientStayController::class);
 
-Route::get('/doctor', [DoctorController::class, 'frontendShow'])->name('doctor');
 
-Route::get('/form', [DoctorController::class, 'form']);
-Route::get('/table', [DoctorController::class, 'table']);

@@ -16,10 +16,14 @@
         </p>
       </div>
       <div class="row">
+
+@foreach ($doctors as $doctor)
+  
+
         <div class="col-sm-6 col-lg-4 mx-auto">
           <div class="box">
             <div class="img-box">
-              <img src="images/d1.jpg" alt="">
+              <img src="{{ asset('/public/uploads/' . $doctor->image) }}" alt="">
             </div>
             <div class="detail-box">
               <div class="social_box">
@@ -37,78 +41,31 @@
                 </a>
               </div>
               <h5>
-                Elina Josh
+                {{ $doctor->name }}
               </h5>
               <h6 class="">
-                Doctor
+                {{ $doctor->specialization }}
+                
               </h6>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-4 mx-auto">
-          <div class="box">
-            <div class="img-box">
-              <img src="images/d2.jpg" alt="">
-            </div>
-            <div class="detail-box">
-              <div class="social_box">
+              <h6 class="">
+                <b>{{ $doctor->title }}</b>
+                
+              </h6>
+              <div class="btn-box">
                 <a href="">
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
-                </a>
-                <a href="">
-                  <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-                <a href="">
-                  <i class="fa fa-youtube" aria-hidden="true"></i>
-                </a>
-                <a href="">
-                  <i class="fa fa-linkedin" aria-hidden="true"></i>
+                 Appointment
                 </a>
               </div>
-              <h5>
-                Adam View
-              </h5>
-              <h6 class="">
-                Doctor
-              </h6>
             </div>
+            
           </div>
         </div>
-        <div class="col-sm-6 col-lg-4 mx-auto">
-          <div class="box">
-            <div class="img-box">
-              <img src="frontend/images/d3.jpg" alt="">
-            </div>
-            <div class="detail-box">
-              <div class="social_box">
-                <a href="">
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
-                </a>
-                <a href="">
-                  <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-                <a href="">
-                  <i class="fa fa-youtube" aria-hidden="true"></i>
-                </a>
-                <a href="">
-                  <i class="fa fa-linkedin" aria-hidden="true"></i>
-                </a>
-              </div>
-              <h5>
-                Mia Mike
-              </h5>
-              <h6 class="">
-                Doctor
-              </h6>
-            </div>
-          </div>
-        </div>
+       
+        @endforeach 
+
+
       </div>
-      <div class="btn-box">
-        <a href="">
-          View All
-        </a>
-      </div>
+     
     </div>
   </section>
 

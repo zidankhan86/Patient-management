@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('specialization', 100);
             $table->string('phone', 20);
             $table->string('email', 100);
+            $table->string('address', 100);
+            $table->string('title', 100);
+            $table->string('image', 100);
             $table->timestamps();
         });
     }

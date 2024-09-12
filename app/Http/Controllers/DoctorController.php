@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Doctor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class DoctorController extends Controller
 {
@@ -30,15 +31,37 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'specialization' => 'required|string|max:100',
-            'phone' => 'nullable|string|max:20',
-            'email' => 'nullable|string|email|max:100',
+
+        $validator = Validator::make($request->all(), [
+            'name'                  => 'required|string',
+            'specialization'        => 'required',
+            'image'                 => 'required|file|max:2000', // Make image required
+            'phone'                 => 'nullable',
+            'email'                 => 'required|email',
+            'address'               => 'nullable',
+            'title'                 => 'nullable',
         ]);
+        
 
-        Doctor::create($request->all());
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
+        $images=null;
+        if ($request->hasFile('image')) {
+            $images=date('Ymdhsis').'.'.$request->file('image')->getClientOriginalExtension();
+            $request->file('image')->storeAs('uploads', $images, 'public');
+        }
+
+        Doctor::create([
+            "name"                 => $request->name,
+            "specialization"       => $request->specialization,
+            "image"                =>$images,
+            "phone"                => $request->phone,
+            "email"                => $request->email,
+            "address"              => $request->address,
+            'title'                => $request->title,
+        ]);
         return redirect()->route('doctors.index');
     }
 
@@ -65,6 +88,7 @@ class DoctorController extends Controller
      */
     public function update(Request $request, Doctor $doctor)
     {
+        
         $request->validate([
             'name' => 'required|string|max:255',
             'specialization' => 'required|string|max:100',
