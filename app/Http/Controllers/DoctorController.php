@@ -86,17 +86,42 @@ class DoctorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Doctor $doctor)
+    public function update(Request $request,$doctor)
     {
-        
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'specialization' => 'required|string|max:100',
-            'phone' => 'nullable|string|max:20',
-            'email' => 'nullable|string|email|max:100',
-        ]);
 
-        $doctor->update($request->all());
+        $validator = Validator::make($request->all(), [
+            'name'                  => 'required|string',
+            'specialization'        => 'required',
+            'image'                 => 'required|file|max:2000', // Make image required
+            'phone'                 => 'nullable',
+            'email'                 => 'required|email',
+            'address'               => 'nullable',
+            'title'                 => 'nullable',
+        ]);
+        
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        
+        $images=null;
+        if ($request->hasFile('image')) {
+            $images=date('Ymdhsis').'.'.$request->file('image')->getClientOriginalExtension();
+            $request->file('image')->storeAs('uploads', $images, 'public');
+        }
+       $doctor = Doctor::find($doctor);
+
+        $doctor->update([
+
+            "name"                 => $request->name,
+            "specialization"       => $request->specialization,
+            "image"                =>$images,
+            "phone"                => $request->phone,
+            "email"                => $request->email,
+            "address"              => $request->address,
+            'title'                => $request->title,
+
+        ]);
 
         return redirect()->route('doctors.index');
     }
