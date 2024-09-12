@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Doctor;
+use App\Models\Patient;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AppointmentController extends Controller
 {
@@ -14,7 +17,7 @@ class AppointmentController extends Controller
     {
         $appointments = Appointment::all();
 
-        return view('appointments.index', compact('appointments'));
+        return view('backend.pages.appointment.index', compact('appointments'));
     }
 
     /**
@@ -22,7 +25,9 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        return view('appointments.create');
+        $patients = Patient::all();
+        $doctors = Doctor::all();
+        return view('backend.pages.appointment.create',compact('patients','doctors'));
     }
 
     /**
@@ -39,7 +44,7 @@ class AppointmentController extends Controller
         ]);
 
         Appointment::create($request->all());
-
+        Alert::success('success','Appointment Confirmed');
         return redirect()->route('appointments.index');
     }
 
@@ -56,7 +61,10 @@ class AppointmentController extends Controller
      */
     public function edit(Appointment $appointment)
     {
-        return view('appointments.edit', compact('appointment'));
+
+        $patients = Patient::all();
+        $doctors = Doctor::all();
+        return view('backend.pages.appointment.edit', compact('appointment','patients','doctors'));
     }
 
     /**
@@ -73,7 +81,7 @@ class AppointmentController extends Controller
         ]);
 
         $appointment->update($request->all());
-
+        Alert::success('success','Appointment updated successfully');
         return redirect()->route('appointments.index');
     }
 
@@ -83,7 +91,7 @@ class AppointmentController extends Controller
     public function destroy(Appointment $appointment)
     {
         $appointment->delete();
-
+        Alert::warning('warning','Patient deleted successfully');
         return redirect()->route('appointments.index');
     }
 }

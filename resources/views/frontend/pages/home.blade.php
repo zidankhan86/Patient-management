@@ -18,7 +18,7 @@
           <div class="col-md-3">
             <div class="box ">
               <div class="img-box">
-                <img src="images/s1.png" alt="">
+                <img src="{{asset ('frontend/images/s1.png')}}" alt="">
               </div>
               <div class="detail-box">
                 <h5>
@@ -33,7 +33,7 @@
           <div class="col-md-3">
             <div class="box ">
               <div class="img-box">
-                <img src="images/s2.png" alt="">
+                <img src="{{asset ('frontend/images/s2.png')}}" alt="">
               </div>
               <div class="detail-box">
                 <h5>
@@ -48,7 +48,7 @@
           <div class="col-md-3">
             <div class="box ">
               <div class="img-box">
-                <img src="images/s3.png" alt="">
+                <img src="{{asset ('frontend/images/s3.png') }}" alt="">
               </div>
               <div class="detail-box">
                 <h5>
@@ -63,7 +63,7 @@
           <div class="col-md-3">
             <div class="box ">
               <div class="img-box">
-                <img src="images/s4.png" alt="">
+                <img src="{{asset ('frontend/images/s4.png')}}" alt="">
               </div>
               <div class="detail-box">
                 <h5>
@@ -87,9 +87,6 @@
 
   <!-- end department section -->
 
-
-
-  <!-- doctor section -->
 
 <!-- doctor section -->
 
@@ -140,7 +137,7 @@
               
             </h6>
             <div class="btn-box">
-              <a href="">
+              <a href="{{ route('appoint') }}">
                Appointment
               </a>
             </div>
@@ -158,7 +155,7 @@
 </section>
 
 <!-- end doctor section -->
-  <!-- end doctor section -->
+
 
  
 

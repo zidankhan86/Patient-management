@@ -52,7 +52,7 @@
                 
               </h6>
               <div class="btn-box">
-                <a href="">
+                <a href="{{ route('appoint') }}">
                  Appointment
                 </a>
               </div>

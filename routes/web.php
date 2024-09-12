@@ -1,22 +1,23 @@
 <?php
 
-use App\Http\Controllers\AppointmentController;
-use App\Http\Controllers\BillingController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ContactController;
-use App\Http\Controllers\DoctorController;
-use App\Http\Controllers\frontend\AboutUsController;
-use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\AppointController;
+use App\Http\Controllers\BillingController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProcedureController;
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\PatientStayController;
 use App\Http\Controllers\PrescriptionController;
-use App\Http\Controllers\ProcedureController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SurgeryDetailController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\frontend\AboutUsController;
+use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
 
 Route::get('/about', [AboutUsController::class, 'about'])->name('about');
 
@@ -39,6 +40,8 @@ Route::controller(LoginController::class)->group(function () {
 
 Route::group(['middleware' => 'customerAuth'], function () {});
 Route::get('/doctor', [DoctorController::class, 'frontendShow'])->name('doctor');
+Route::get('/appoint', [AppointController::class, 'index'])->name('appoint');
+
 
 Route::get('/form', [DoctorController::class, 'form']);
 Route::get('/table', [DoctorController::class, 'table']);
@@ -49,17 +52,11 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
 
     Route::get('/', [HomeController::class, 'dashboard'])->name('dashboard');
 
-    // Category Routes
-    Route::get('/category-form', [CategoryController::class, 'categoryForm'])->name('category.form');
-    Route::post('/category-store', [CategoryController::class, 'categoryStore'])->name('category.store');
-    Route::get('/category-list', [CategoryController::class, 'categoryList'])->name('category.list');
-    Route::get('/category-edit/{id}', [CategoryController::class, 'categoryEdit'])->name('category.edit');
-    Route::post('/category-update/{id}', [CategoryController::class, 'categorupdate'])->name('category.update');
-    Route::get('/category-delete/{id}', [CategoryController::class, 'categordelete'])->name('category.delete');
+    
     // Doctors Routes
     Route::resource('doctors', DoctorController::class);
     Route::resource('patients', PatientController::class);
-
+    Route::resource('appointments', AppointmentController::class);
     Route::controller(ReportController::class)->group(function () {
 
         Route::get('/report', 'report')->name('report');
@@ -71,7 +68,7 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
 
 
 
-Route::resource('appointments', AppointmentController::class);
+
 
 Route::resource('prescriptions', PrescriptionController::class);
 
