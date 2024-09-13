@@ -40,7 +40,7 @@ Route::controller(LoginController::class)->group(function () {
 
 Route::group(['middleware' => 'customerAuth'], function () {});
 Route::get('/doctor', [DoctorController::class, 'frontendShow'])->name('doctor');
-Route::get('/appoint', [AppointController::class, 'index'])->name('appoint');
+
 
 
 Route::get('/form', [DoctorController::class, 'form']);
@@ -68,7 +68,7 @@ Route::group(['middleware' => ['auth', 'admin'], 'prefix' => 'admin'], function 
 
 
 
-
+Route::get('/appoint', [AppointController::class, 'index'])->name('appoint');
 
 Route::resource('prescriptions', PrescriptionController::class);
 
