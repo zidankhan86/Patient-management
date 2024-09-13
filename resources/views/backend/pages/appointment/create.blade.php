@@ -60,12 +60,13 @@
                                     <select class="form-control input-default" name="type" id="type" required>
                                         <option value="">Select Type</option>
                                         <option value="Consultancy" {{ old('type') == 'Consultancy' ? 'selected' : '' }}>Consultancy</option>
-                                        <option value="OT/Operation" {{ old('type') == 'OT/Operation' ? 'selected' : '' }}>OT/Operation</option>
+                                        <option value="Operation" {{ old('type') == 'Operation' ? 'selected' : '' }}>Operation</option>
                                     </select>
                                     @error('type')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
+                                
 
                                 <!-- Appointment Status -->
                                 <div class="form-group">

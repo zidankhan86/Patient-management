@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use App\Models\Prescription;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PrescriptionController extends Controller
 {
@@ -32,16 +34,25 @@ class PrescriptionController extends Controller
     {
         $request->validate([
             'appointment_id' => 'required|exists:appointments,id',
-            'doctor_id' => 'required|exists:doctors,id',
-            'patient_id' => 'required|exists:patients,id',
             'prescription_details' => 'required|string',
             'issued_at' => 'required|date',
         ]);
+    
+        // Automatically link the prescription to the appointment's doctor
+        $appointment = Appointment::findOrFail($request->appointment_id);
+        
+        Prescription::create([
+            'appointment_id' => $request->appointment_id,
+            'doctor_id' => $appointment->doctor_id,  // Automatically set the doctor from the appointment
+            'patient_id' => $appointment->patient_id, // Automatically set the patient from the appointment
+            'prescription_details' => $request->prescription_details,
+            'issued_at' => $request->issued_at,
+        ]);
+        Alert::success('success','Prescription Created Successfully');
 
-        Prescription::create($request->all());
-
-        return redirect()->route('prescriptions.index');
+        return redirect()->route('appointments.show', $appointment->id);
     }
+    
 
     /**
      * Display the specified resource.
@@ -65,17 +76,19 @@ class PrescriptionController extends Controller
     public function update(Request $request, Prescription $prescription)
     {
         $request->validate([
-            'appointment_id' => 'required|exists:appointments,id',
-            'doctor_id' => 'required|exists:doctors,id',
-            'patient_id' => 'required|exists:patients,id',
             'prescription_details' => 'required|string',
             'issued_at' => 'required|date',
         ]);
+    
+        $prescription->update([
+            'prescription_details' => $request->input('prescription_details'),
+            'issued_at' => $request->input('issued_at'),
+        ]);
+        Alert::success('success','Prescription Updated Successfully');
 
-        $prescription->update($request->all());
-
-        return redirect()->route('prescriptions.index');
+        return redirect()->back();
     }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -83,7 +96,8 @@ class PrescriptionController extends Controller
     public function destroy(Prescription $prescription)
     {
         $prescription->delete();
+        Alert::success('success','Prescription Deleted Successfully');
 
-        return redirect()->route('prescriptions.index');
+        return redirect()->back();
     }
 }

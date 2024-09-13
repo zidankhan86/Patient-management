@@ -9,7 +9,7 @@ class Billing extends Model
 {
     use HasFactory;
 
-    protected $table = 'billing';
+    protected $table = 'billings';
 
     protected $guarded = []; // Use an empty array to allow mass assignment for all attributes
 

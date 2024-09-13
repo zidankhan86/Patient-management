@@ -67,7 +67,15 @@ class PatientController extends Controller
      */
     public function show(Patient $patient)
     {
-        return view('patients.show', compact('patient'));
+        $patient->load([
+            'appointments',
+            'prescriptions',
+            'procedures',
+            'surgeryDetails',
+            'billing',
+            'stays'
+        ]);
+        return view('backend.pages.patient.show', compact('patient'));
     }
 
     /**
@@ -117,6 +125,7 @@ class PatientController extends Controller
     public function destroy(Patient $patient)
     {
         $patient->delete();
+        Alert::success('success','Patient Delete successfully');
 
         return redirect()->route('patients.index');
     }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Procedure;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class ProcedureController extends Controller
 {
@@ -40,8 +41,9 @@ class ProcedureController extends Controller
         ]);
 
         Procedure::create($request->all());
+        Alert::success('success','Procedure created successfully');
 
-        return redirect()->route('procedures.index');
+        return redirect()->back();
     }
 
     /**
@@ -75,8 +77,9 @@ class ProcedureController extends Controller
         ]);
 
         $procedure->update($request->all());
+        Alert::success('success','Procedure updated successfully');
 
-        return redirect()->route('procedures.index');
+        return redirect()->back();
     }
 
     /**
@@ -85,7 +88,8 @@ class ProcedureController extends Controller
     public function destroy(Procedure $procedure)
     {
         $procedure->delete();
+        Alert::success('success','Procedure deleted successfully');
 
-        return redirect()->route('procedures.index');
+        return redirect()->back();
     }
 }

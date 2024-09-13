@@ -48,11 +48,12 @@
                                 <!-- Appointment Date -->
                                 <div class="form-group">
                                     <label for="appointment_date">Appointment Date</label>
-                                    <input type="datetime-local" class="form-control input-default" name="appointment_date">
+                                    <input type="datetime-local" class="form-control input-default" name="appointment_date" id="appointment_date"
+                                        value="{{ old('appointment_date', $appointment->appointment_date->format('Y-m-d\TH:i')) }}">
                                     @error('appointment_date')
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
-                                </div>
+                                </div>                                
 
                                 <!-- Appointment Type -->
                                 <div class="form-group">
@@ -60,7 +61,7 @@
                                     <select class="form-control input-default" name="type" id="type" required>
                                         <option value="">Select Type</option>
                                         <option value="Consultancy" {{ old('type', $appointment->type) == 'Consultancy' ? 'selected' : '' }}>Consultancy</option>
-                                        <option value="OT/Operation" {{ old('type', $appointment->type) == 'OT/Operation' ? 'selected' : '' }}>OT/Operation</option>
+                                        <option value="Operation" {{ old('type', $appointment->type) == 'Operation' ? 'selected' : '' }}>Operation</option>
                                     </select>
                                     @error('type')
                                         <p class="text-danger">{{ $message }}</p>

@@ -12,6 +12,9 @@ class Appointment extends Model
     protected $table = 'appointments';
 
     protected $guarded = []; // Use an empty array to allow mass assignment for all attributes
+    protected $casts = [
+        'appointment_date' => 'datetime',
+    ];
 
     public function patient()
     {
