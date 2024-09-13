@@ -10,10 +10,10 @@ class HomeController extends Controller
     public function dashboard()
     {
 
-        $totalCategories = Category::get()->count();
+        
         $users = User::latest()->get();
         $totalUsers = User::get()->count();
 
-        return view('backend.pages.dashboard', compact('users', 'totalCategories', 'totalUsers'));
+        return view('backend.pages.dashboard', compact('users', 'totalUsers'));
     }
 }
