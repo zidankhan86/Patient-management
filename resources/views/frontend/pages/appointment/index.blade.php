@@ -11,7 +11,7 @@
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="form_container contact-form p-4 rounded shadow-sm bg-white">
-                    <form action="" method="POST">
+                    <form action="{{ route('appoint.store') }}" method="POST">
                         @csrf
                         <div class="form-row mb-3">
                             <div class="col-lg-6 mb-3">
