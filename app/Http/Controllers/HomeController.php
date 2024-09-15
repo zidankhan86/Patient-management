@@ -9,7 +9,6 @@ class HomeController extends Controller
     public function dashboard()
     {
 
-        
         $users = User::latest()->get();
         $totalUsers = User::get()->count();
 

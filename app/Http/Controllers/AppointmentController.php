@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
+use App\Models\Appointment;
 use App\Models\Doctor;
 use App\Models\Patient;
-use App\Models\Appointment;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -28,7 +28,8 @@ class AppointmentController extends Controller
     {
         $patients = Patient::all();
         $doctors = Doctor::all();
-        return view('backend.pages.appointment.create',compact('patients','doctors'));
+
+        return view('backend.pages.appointment.create', compact('patients', 'doctors'));
     }
 
     /**
@@ -47,46 +48,44 @@ class AppointmentController extends Controller
                     $exists = Appointment::where('doctor_id', $request->doctor_id)
                         ->where('appointment_date', $value)
                         ->exists();
-    
+
                     if ($exists) {
                         $fail('The appointment date and time is already taken for this doctor.');
                     }
-                }
+                },
             ],
             'type' => 'required|in:Consultancy,Operation',
             'status' => 'required|in:Scheduled,Completed,Cancelled',
         ]);
-    
+
         // Create the appointment
         Appointment::create($request->all());
-    
+
         // Display success message
         Alert::success('success', 'Appointment Confirmed');
-    
+
         // Redirect to the appointments index page
         return redirect()->route('appointments.index');
     }
-    
 
     /**
      * Display the specified resource.
      */
     public function show(Appointment $appointment)
-{
-    // Eager load the related models to avoid N+1 query issues
-    $appointment->load([
-        'patient', 
-        'doctor', 
-        'prescriptions.doctor',  // Load doctor relationship in prescriptions
-        'procedures', 
-        'surgeryDetails', 
-        'billing'
-    ]);
+    {
+        // Eager load the related models to avoid N+1 query issues
+        $appointment->load([
+            'patient',
+            'doctor',
+            'prescriptions.doctor',  // Load doctor relationship in prescriptions
+            'procedures',
+            'surgeryDetails',
+            'billing',
+        ]);
 
-    // Pass the appointment to the view
-    return view('backend.pages.appointment.show', compact('appointment'));
-}
-
+        // Pass the appointment to the view
+        return view('backend.pages.appointment.show', compact('appointment'));
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -97,9 +96,10 @@ class AppointmentController extends Controller
         $doctors = Doctor::all();
         // Ensure that appointment_date is a Carbon instance
         $appointment->appointment_date = Carbon::parse($appointment->appointment_date);
+
         return view('backend.pages.appointment.edit', compact('appointment', 'patients', 'doctors'));
     }
-    
+
     /**
      * Update the specified resource in storage.
      */
@@ -114,7 +114,8 @@ class AppointmentController extends Controller
         ]);
 
         $appointment->update($request->all());
-        Alert::success('success','Appointment updated successfully');
+        Alert::success('success', 'Appointment updated successfully');
+
         return redirect()->route('appointments.index');
     }
 
@@ -124,7 +125,8 @@ class AppointmentController extends Controller
     public function destroy(Appointment $appointment)
     {
         $appointment->delete();
-        Alert::warning('warning','Patient deleted successfully');
+        Alert::warning('warning', 'Patient deleted successfully');
+
         return redirect()->route('appointments.index');
     }
 }

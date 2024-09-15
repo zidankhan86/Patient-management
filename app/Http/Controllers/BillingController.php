@@ -40,7 +40,7 @@ class BillingController extends Controller
         ]);
 
         Billing::create($request->all());
-        Alert::success('success','Bill Created successfully');
+        Alert::success('success', 'Bill Created successfully');
 
         return redirect()->back();
     }
@@ -75,7 +75,7 @@ class BillingController extends Controller
         ]);
 
         $billing->update($request->all());
-        Alert::success('success','Bill Updated Successfully');
+        Alert::success('success', 'Bill Updated Successfully');
 
         return redirect()->back();
     }
@@ -86,7 +86,7 @@ class BillingController extends Controller
     public function destroy(Billing $billing)
     {
         $billing->delete();
-        Alert::success('success','Bill Deleted Successfully');
+        Alert::success('success', 'Bill Deleted Successfully');
 
         return redirect()->back();
     }

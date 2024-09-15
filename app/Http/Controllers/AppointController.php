@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use App\Models\Doctor;
 use App\Models\Patient;
-use App\Models\Appointment;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -13,11 +13,11 @@ class AppointController extends Controller
 {
     public function index()
     {
-   
+
         $patients = Patient::all();
         $doctors = Doctor::all();
 
-        return view('frontend.pages.appointment.index', compact('patients','doctors'));
+        return view('frontend.pages.appointment.index', compact('patients', 'doctors'));
     }
 
     public function appoint_store(Request $request)
@@ -31,7 +31,8 @@ class AppointController extends Controller
         ]);
 
         Appointment::create($request->all());
-        Alert::success('success','Appointment Confirmed');
+        Alert::success('success', 'Appointment Confirmed');
+
         return redirect()->back();
     }
 }

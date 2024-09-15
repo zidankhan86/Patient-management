@@ -41,7 +41,7 @@ class ProcedureController extends Controller
         ]);
 
         Procedure::create($request->all());
-        Alert::success('success','Procedure created successfully');
+        Alert::success('success', 'Procedure created successfully');
 
         return redirect()->back();
     }
@@ -77,7 +77,7 @@ class ProcedureController extends Controller
         ]);
 
         $procedure->update($request->all());
-        Alert::success('success','Procedure updated successfully');
+        Alert::success('success', 'Procedure updated successfully');
 
         return redirect()->back();
     }
@@ -88,7 +88,7 @@ class ProcedureController extends Controller
     public function destroy(Procedure $procedure)
     {
         $procedure->delete();
-        Alert::success('success','Procedure deleted successfully');
+        Alert::success('success', 'Procedure deleted successfully');
 
         return redirect()->back();
     }

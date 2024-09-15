@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Patient;
 use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PatientController extends Controller
 {
@@ -33,13 +33,13 @@ class PatientController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name'          => 'required|string|max:255',
-            'age'           => 'required|integer|min:0',
-            'gender'        => 'required|string|in:Male,Female,Other',
-            'phone'         => 'required|string|max:20',
-            'email'         => 'required|email|max:100|unique:patients,email',
-            'address'       => 'nullable|string',
-            'patient_type'  => 'required|in:Consultancy,Operation',
+            'name' => 'required|string|max:255',
+            'age' => 'required|integer|min:0',
+            'gender' => 'required|string|in:Male,Female,Other',
+            'phone' => 'required|string|max:20',
+            'email' => 'required|email|max:100|unique:patients,email',
+            'address' => 'nullable|string',
+            'patient_type' => 'required|in:Consultancy,Operation',
         ]);
 
         // Check for validation errors
@@ -49,16 +49,17 @@ class PatientController extends Controller
 
         // Create new patient record
         Patient::create([
-            'name'          => $request->name,
-            'age'           => $request->age,
-            'gender'        => $request->gender,
-            'phone'         => $request->phone,
-            'email'         => $request->email,
-            'address'       => $request->address,
-            'patient_type'  => $request->patient_type,
+            'name' => $request->name,
+            'age' => $request->age,
+            'gender' => $request->gender,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'address' => $request->address,
+            'patient_type' => $request->patient_type,
         ]);
 
-        Alert::success('success','Patient Created successfully');
+        Alert::success('success', 'Patient Created successfully');
+
         return redirect()->route('patients.index');
     }
 
@@ -73,8 +74,9 @@ class PatientController extends Controller
             'procedures',
             'surgeryDetails',
             'billing',
-            'stays'
+            'stays',
         ]);
+
         return view('backend.pages.patient.show', compact('patient'));
     }
 
@@ -92,13 +94,13 @@ class PatientController extends Controller
     public function update(Request $request, Patient $patient)
     {
         $validator = Validator::make($request->all(), [
-            'name'          => 'required|string|max:255',
-            'age'           => 'required|integer|min:0',
-            'gender'        => 'required|string|in:Male,Female,Other',
-            'phone'         => 'required|string|max:20',
-            'email'         => 'required',
-            'address'       => 'nullable|string',
-            'patient_type'  => 'required|in:Consultancy,Operation',
+            'name' => 'required|string|max:255',
+            'age' => 'required|integer|min:0',
+            'gender' => 'required|string|in:Male,Female,Other',
+            'phone' => 'required|string|max:20',
+            'email' => 'required',
+            'address' => 'nullable|string',
+            'patient_type' => 'required|in:Consultancy,Operation',
         ]);
 
         // Check for validation errors
@@ -107,15 +109,16 @@ class PatientController extends Controller
         }
 
         $patient->update([
-            'name'          => $request->name,
-            'age'           => $request->age,
-            'gender'        => $request->gender,
-            'phone'         => $request->phone,
-            'email'         => $request->email,
-            'address'       => $request->address,
-            'patient_type'  => $request->patient_type,
+            'name' => $request->name,
+            'age' => $request->age,
+            'gender' => $request->gender,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'address' => $request->address,
+            'patient_type' => $request->patient_type,
         ]);
-        Alert::success('success','Patient updated successfully');
+        Alert::success('success', 'Patient updated successfully');
+
         return redirect()->route('patients.index');
     }
 
@@ -125,7 +128,7 @@ class PatientController extends Controller
     public function destroy(Patient $patient)
     {
         $patient->delete();
-        Alert::success('success','Patient Delete successfully');
+        Alert::success('success', 'Patient Delete successfully');
 
         return redirect()->route('patients.index');
     }

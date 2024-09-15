@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\SurgeryDetail;
+use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class SurgeryDetailController extends Controller
@@ -42,7 +42,7 @@ class SurgeryDetailController extends Controller
         ]);
 
         SurgeryDetail::create($request->all());
-        Alert::success('success','Surgery Detail created');
+        Alert::success('success', 'Surgery Detail created');
 
         return redirect()->back();
     }
@@ -78,7 +78,7 @@ class SurgeryDetailController extends Controller
         ]);
 
         $surgeryDetail->update($request->all());
-        Alert::success('success','Surgery details updated');
+        Alert::success('success', 'Surgery details updated');
 
         return redirect()->back();
     }
@@ -89,7 +89,7 @@ class SurgeryDetailController extends Controller
     public function destroy(SurgeryDetail $surgeryDetail)
     {
         $surgeryDetail->delete();
-        Alert::success('success','Surgery Detail deleted successfully');
+        Alert::success('success', 'Surgery Detail deleted successfully');
 
         return redirect()->back();
     }

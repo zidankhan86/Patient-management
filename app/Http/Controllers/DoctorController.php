@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Doctor;
 use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DoctorController extends Controller
 {
@@ -34,36 +34,36 @@ class DoctorController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'name'                  => 'required|string',
-            'specialization'        => 'required',
-            'image'                 => 'required|file|max:2000', // Make image required
-            'phone'                 => 'nullable',
-            'email'                 => 'required|email',
-            'address'               => 'nullable',
-            'title'                 => 'nullable',
+            'name' => 'required|string',
+            'specialization' => 'required',
+            'image' => 'required|file|max:2000', // Make image required
+            'phone' => 'nullable',
+            'email' => 'required|email',
+            'address' => 'nullable',
+            'title' => 'nullable',
         ]);
-        
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $images=null;
+        $images = null;
         if ($request->hasFile('image')) {
-            $images=date('Ymdhsis').'.'.$request->file('image')->getClientOriginalExtension();
+            $images = date('Ymdhsis').'.'.$request->file('image')->getClientOriginalExtension();
             $request->file('image')->storeAs('uploads', $images, 'public');
         }
 
         Doctor::create([
-            "name"                 => $request->name,
-            "specialization"       => $request->specialization,
-            "image"                =>$images,
-            "phone"                => $request->phone,
-            "email"                => $request->email,
-            "address"              => $request->address,
-            'title'                => $request->title,
+            'name' => $request->name,
+            'specialization' => $request->specialization,
+            'image' => $images,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'address' => $request->address,
+            'title' => $request->title,
         ]);
-        Alert::success('success','Doctors updated successfully');
+        Alert::success('success', 'Doctors updated successfully');
+
         return redirect()->route('doctors.index');
     }
 
@@ -88,43 +88,43 @@ class DoctorController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,$doctor)
+    public function update(Request $request, $doctor)
     {
 
         $validator = Validator::make($request->all(), [
-            'name'                  => 'required|string',
-            'specialization'        => 'required',
-            'image'                 => 'required|file|max:2000', // Make image required
-            'phone'                 => 'nullable',
-            'email'                 => 'required|email',
-            'address'               => 'nullable',
-            'title'                 => 'nullable',
+            'name' => 'required|string',
+            'specialization' => 'required',
+            'image' => 'required|file|max:2000', // Make image required
+            'phone' => 'nullable',
+            'email' => 'required|email',
+            'address' => 'nullable',
+            'title' => 'nullable',
         ]);
-        
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-        
-        $images=null;
+
+        $images = null;
         if ($request->hasFile('image')) {
-            $images=date('Ymdhsis').'.'.$request->file('image')->getClientOriginalExtension();
+            $images = date('Ymdhsis').'.'.$request->file('image')->getClientOriginalExtension();
             $request->file('image')->storeAs('uploads', $images, 'public');
         }
-       $doctor = Doctor::find($doctor);
+        $doctor = Doctor::find($doctor);
 
         $doctor->update([
 
-            "name"                 => $request->name,
-            "specialization"       => $request->specialization,
-            "image"                =>$images,
-            "phone"                => $request->phone,
-            "email"                => $request->email,
-            "address"              => $request->address,
-            'title'                => $request->title,
+            'name' => $request->name,
+            'specialization' => $request->specialization,
+            'image' => $images,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'address' => $request->address,
+            'title' => $request->title,
 
         ]);
-        Alert::success('success','Doctors updated successfully');
+        Alert::success('success', 'Doctors updated successfully');
+
         return redirect()->route('doctors.index');
     }
 
@@ -134,7 +134,7 @@ class DoctorController extends Controller
     public function destroy(Doctor $doctor)
     {
         $doctor->delete();
-        Alert::success('success','Doctor Deleted successfully');
+        Alert::success('success', 'Doctor Deleted successfully');
 
         return redirect()->route('doctors.index');
     }
@@ -146,11 +146,13 @@ class DoctorController extends Controller
         return view('frontend.pages.doctor.doctor', compact('doctors'));
     }
 
-    public function form(){
+    public function form()
+    {
         return view('basicform.form');
     }
 
-    public function table(){
+    public function table()
+    {
         return view('basicform.table');
     }
 }
