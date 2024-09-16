@@ -10,7 +10,7 @@
                     <div class="text-center">
                         <span class="display-5"><i class="icon-user gradient-4-text"></i></span>
                         <h2 class="mt-3">{{ $totalUsers }} Users</h2>
-                        <p>Currently active</p><a href="javascript:void()" class="btn gradient-4 btn-lg border-0 btn-rounded px-5">Add
+                        <p>Currently</p><a href="javascript:void()" class="btn gradient-4 btn-lg border-0 btn-rounded px-5">See
                             more</a>
                     </div>
                 </div>
@@ -21,8 +21,8 @@
                 <div class="card-body">
                     <div class="text-center">
                         <span class="display-5"><i class="fa fa-heart"></i></span>
-                        <h2 class="mt-3">52 Pataints</h2>
-                        <p>Currently active</p><a href="javascript:void()" class="btn gradient-4 btn-lg border-0 btn-rounded px-5">Add
+                        <h2 class="mt-3">{{ $totalPatient }} Pataints</h2>
+                        <p>Currently</p><a href="{{ route('patients.index') }}" class="btn gradient-4 btn-lg border-0 btn-rounded px-5">Add
                             more</a>
                     </div>
                 </div>
@@ -33,8 +33,8 @@
                 <div class="card-body">
                     <div class="text-center">
                         <span class="display-5"><i class="icon-grid"></i></span>
-                        <h2 class="mt-3">52 Appoints</h2>
-                        <p>Currently active</p><a href="javascript:void()" class="btn gradient-4 btn-lg border-0 btn-rounded px-5">Add
+                        <h2 class="mt-3">{{ $totalAppoints }} Appoints</h2>
+                        <p>Currently</p><a href="{{ route('appointments.index') }}" class="btn gradient-4 btn-lg border-0 btn-rounded px-5">Add
                             more</a>
                     </div>
                 </div>
@@ -45,8 +45,8 @@
                 <div class="card-body">
                     <div class="text-center">
                         <span class="display-5"><i class="icon-user gradient-4-text"></i></span>
-                        <h2 class="mt-3">52 Doctors</h2>
-                        <p>Currently active</p><a href="javascript:void()" class="btn gradient-4 btn-lg border-0 btn-rounded px-5">Add
+                        <h2 class="mt-3">{{ $totalDoctors }} Doctors</h2>
+                        <p>Currently</p><a href="{{ route('doctors.index') }}" class="btn gradient-4 btn-lg border-0 btn-rounded px-5">Add
                             more</a>
                     </div>
                 </div>

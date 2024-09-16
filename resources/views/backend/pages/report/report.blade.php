@@ -10,7 +10,7 @@
 
 
                             <br>
-                            <h1>Order Report</h1><br>
+                            <h1>Appointment Report</h1><br>
 
                             <form action="{{ route('order.report.search') }}" method="get">
 
@@ -37,19 +37,18 @@
                             </form>
                             <div id="orderReport">
 
-                                <h1>Order Reports- {{ date('Y-m-d') }}</h1><br>
+                                <h1>Appointment Reports- {{ date('Y-m-d') }}</h1><br>
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
 
                                             <th scope="col">Serial</th>
-                                            <th scope="col">Product</th>
-                                            <th scope="col">Total</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Address</th>
-                                            <th scope="col">Phone</th>
-                                            <th scope="col">Email</th>
+                                            <th scope="col">Patient Name</th>
+                                            <th scope="col">Doctor Name</th>
+                                            <th scope="col">Date & Time</th>
+                                            <th scope="col">Type</th>
                                             <th scope="col">Status</th>
+
 
 
                                         </tr>
@@ -57,21 +56,22 @@
                                     <tbody>
 
 
-                                        @if (isset($orders))
-                                            @foreach ($orders as $key => $order)
-                                                <tr>
-
-                                                    <th scope="row">{{ $key + 1 }}</th>
-                                                    <td>{{ $order->name }}</td>
-                                                    <td>{{ $order->price }} Tk.</td>
-                                                    <td>{{ $order->full_name }}</td>
-                                                    <td>{{ $order->address }}</td>
-                                                    <td>{{ $order->phone }}</td>
-                                                    <td>{{ $order->email }}</td>
-                                                    <td class="text-danger">{{ $order->status }}</td>
-
-                                                </tr>
-                                            @endforeach
+                                        @if (isset($Appointment))
+                                        @forelse ($Appointment as $index => $appointment)
+                                        <tr>
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ $appointment->patient->name }}</td>
+                                            <td>{{ $appointment->doctor->name }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($appointment->appointment_date)->format('d M Y h:i A') }}</td>
+                                            <td>{{ $appointment->type }}</td>
+                                            <td>{{ $appointment->status }}</td>
+                                            
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="7" class="text-center">No appointments available</td>
+                                        </tr>
+                                    @endforelse
                                         @endif
                                     </tbody>
                                 </table>

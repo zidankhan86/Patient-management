@@ -4,7 +4,7 @@
       <nav class="navbar navbar-expand-lg custom_nav-container ">
         <a class="navbar-brand" href="{{ route('home') }}">
           <span>
-            Orthoc
+            PTMS
           </span>
         </a>
 
@@ -20,9 +20,7 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ route('about') }}"> About</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="departments.html">Departments</a>
-            </li>
+           
             <li class="nav-item">
               <a class="nav-link" href="{{ route('doctor') }}">Doctors</a>
             </li>
