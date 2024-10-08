@@ -17,7 +17,7 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         // Define the specific date for access control
-        $definedDate = Carbon::createFromFormat('Y-m-d', '2024-09-20');  // Adjust this date
+        $definedDate = Carbon::createFromFormat('Y-m-d', '2024-11-28');  // Adjust this date
 
         // Get the current date
         $currentDate = Carbon::now();

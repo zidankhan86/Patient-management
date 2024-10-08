@@ -7,36 +7,37 @@
                 <div class="card shadow-sm">
                     <div class="card-body">
                         <div class="text-center mb-4">
-                            <h1 class="card-title">Appointment Report</h1>
+                            <h1 class="card-title"><b>PMS</b></h1>
                             <hr class="w-25 mx-auto">
                         </div>
-
                         <form action="{{ route('order.report.search') }}" method="get" class="mb-4">
                             <div class="row">
-                                <div class="col-md-5">
+                                <div class="col-md-3 col-sm-12 mb-2">
                                     <div class="form-group">
                                         <label for="from_date">From Date:</label>
-                                        <input name="from_date" type="date" class="form-control" id="from_date">
+                                        <input name="from_date" type="date" class="form-control" id="from_date" required>
                                     </div>
                                 </div>
-                                <div class="col-md-5">
+                                <div class="col-md-3 col-sm-12 mb-2">
                                     <div class="form-group">
                                         <label for="to_date">To Date:</label>
-                                        <input name="to_date" type="date" class="form-control" id="to_date">
+                                        <input name="to_date" type="date" class="form-control" id="to_date" required>
                                     </div>
                                 </div>
-                                <div class="col-md-2 d-flex align-items-end">
-                                    <button type="submit" class="btn btn-success w-100">Search</button>
+                                <div class="col-md-2 col-sm-12 mb-2">
+                                    <div class="form-group">
+                                        <label>&nbsp;</label> <!-- Empty label for spacing -->
+                                        <button type="submit" class="btn btn-success w-100">Search</button>
+                                    </div>
                                 </div>
                             </div>
                         </form>
+                        
 
                         <div id="orderReport">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h2>Appointment Reports - {{ date('Y-m-d') }}</h2>
-                                <button onclick="printDiv('orderReport')" class="btn btn-outline-primary">
-                                    <i class="fas fa-print"></i> Print Report
-                                </button>
+                                <h2>Appointment Reports</h2>
+                                
                             </div>
                             <table class="table table-bordered table-hover mt-3">
                                 <thead class="thead-dark">
@@ -73,6 +74,13 @@
                                 </tbody>
                             </table>
                         </div>
+
+                        <div class="d-flex justify-content-center">
+                            <button onclick="printDiv('orderReport')" class="btn btn-outline-primary">
+                                Print Report
+                            </button>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
