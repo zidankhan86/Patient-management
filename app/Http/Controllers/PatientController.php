@@ -36,16 +36,20 @@ class PatientController extends Controller
             'name' => 'required|string|max:255',
             'age' => 'required|integer|min:0',
             'gender' => 'required|string|in:Male,Female,Other',
-            'phone' => 'required|string|max:20',
+            'phone' => [
+                'nullable',
+                'regex:/^(?:\+?88|0088)?01[13-9]\d{8}$/'
+            ],
             'email' => 'required|email|max:100|unique:patients,email',
             'address' => 'nullable|string',
             'patient_type' => 'required|in:Consultancy,Operation',
         ]);
-
+        
         // Check for validation errors
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
+        
 
         // Create new patient record
         Patient::create([

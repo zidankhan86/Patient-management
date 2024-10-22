@@ -34,18 +34,26 @@ class DoctorController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
-            'specialization' => 'required',
-            'image' => 'required|file|max:2000', // Make image required
-            'phone' => 'nullable',
-            'email' => 'required|email',
-            'address' => 'nullable',
-            'title' => 'nullable',
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+            ],
+            'specialization' => 'required|string|max:255',
+            'image' => 'required|file|mimes:jpeg,jpg,png|max:2000',
+            'phone' => [
+                'nullable',
+                'regex:/^(?:\+?88|0088)?01[13-9]\d{8}$/'
+            ],
+            'email' => 'required|email|max:255',
+            'address' => 'nullable|string|max:255',
+            'title' => 'nullable|string|max:255',
         ]);
-
+        
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
+        
 
         $images = null;
         if ($request->hasFile('image')) {

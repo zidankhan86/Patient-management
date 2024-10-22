@@ -30,10 +30,10 @@
 
                                     <div class="form-group col-md-4">
                                         <select class="form-control input-default" name="gender" required>
-                                            <option value="">Select Gender</option>
+                                           
                                             <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>Male</option>
                                             <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }}>Female</option>
-                                            <option value="Other" {{ old('gender') == 'Other' ? 'selected' : '' }}>Other</option>
+                                            
                                         </select>
                                         @error('gender')
                                             <p class="text-danger">{{ $message }}</p>
@@ -68,7 +68,7 @@
 
                                 <div class="form-group">
                                     <select class="form-control input-default" name="patient_type" required>
-                                        <option value="">Select Patient Type</option>
+                                       
                                         <option value="Consultancy" {{ old('patient_type') == 'Consultancy' ? 'selected' : '' }}>Consultancy</option>
                                         <option value="Operation" {{ old('patient_type') == 'Operation' ? 'selected' : '' }}>Operation</option>
                                     </select>
